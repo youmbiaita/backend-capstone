@@ -1,17 +1,20 @@
-const { Schema, model } = require('../config/db-connection');
+const { Schema, model } = require('../config/db-connection.js');
 
-const userSchema = Schema({
-  email: {
+//User schema
+const userSchema = new Schema({
+  userId: {
     type: String,
-    required: true,
-    unique: true,
+    required: true, 
+    index: true
   },
-  password: {
+  name: { 
     type: String,
-    required: true,
-    unique: true,
-    min: 5,
-  },
+    required: true, 
+    index: true },
+  email: { 
+    type: String, 
+    required: true, 
+    unique: true }
 });
 
 module.exports = model('User', userSchema);
