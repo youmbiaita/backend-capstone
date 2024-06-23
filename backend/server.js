@@ -2,6 +2,7 @@
 require('dotenv').config();
 // Requiring express
 const express = require('express');
+const cors = require('cors')
 // Creating the express server and storing inside the app variable
 const app = express();
 // Port in which the server will run on
@@ -13,6 +14,7 @@ const orderRouter = require('./routes/orders.js');
 
 // Configuring the server to accept and parse JSON data.
 app.use(express.json());
+app.use(cors())
 
 //Custom Middlware
 app.use((req, res, next) => {
