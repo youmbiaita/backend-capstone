@@ -35,8 +35,8 @@ async function getAllUsers(req, res) {
 
 //function to create a new user
 async function createUser(req, res) {
-  const { name, email } = req.body;
-  const user = new User({ name, email });
+  const { name, email, password, isAdmin } = req.body;
+  const user = new User({ name, email, password, isAdmin });
 
   try {
     await user.save();
@@ -59,7 +59,7 @@ async function getUserById(req, res) {
 
 //function to update an user using id
 async function updateUserById(req, res) {
-  const { name, email } = req.body;
+  const { name, email, password, isAdmin } = req.body;
 
   try {
     const user = await User.findByIdAndUpdate(req.params.id, { name, email }, { new: true });

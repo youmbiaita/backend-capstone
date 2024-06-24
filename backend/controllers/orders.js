@@ -12,11 +12,10 @@ module.exports = {
 
   //middleware functin to validate orders
 async function validateOrder(req, res, next) {
-  const { userId, orderItems, total, status } = req.body;
+  const { userId, orderItems, status } = req.body;
   let message = "";
   if (!userId) message += 'userId, ';
   if (!orderItems) message += 'orderItems, ';
-  if (!total) message += 'total, ';
   if (!status) message += 'status.';
 
   if (message) {
@@ -38,7 +37,7 @@ async function getAllOrders(req, res) {
 //function to create a new order
 async function  createOrder(req, res) {
   const { userId, orderItems, total, status } = req.body;
-  const order = new Order({ userId, orderItems, total, status });
+  const order = new Order({ userId, orderItems, status });
 
   try {
     await order.save();
@@ -61,10 +60,10 @@ async function getOrderById(req, res) {
 
 //function to update order using Id
 async function updateOrderById(req, res) {
-  const { userId, orderItems, total, status } = req.body;
+  const { userId, orderItems, status } = req.body;
 
   try {
-    const order = await Order.findByIdAndUpdate(req.params.id, { userId, orderItems, total, status }, { new: true });
+    const order = await Order.findByIdAndUpdate(req.params.id, { userId, orderItems, status }, { new: true });
     if (!order) return res.status(404).send('Order not found');
     res.json(order);
   } catch (err) {

@@ -13,12 +13,8 @@ const orderSchema = new Schema({
              required: true 
         }
     ],
-    total: { 
-        type: Number,
-         required: true },
     status: {
-         type: String,
-          required: true 
+         type: String
     }
   });
 
