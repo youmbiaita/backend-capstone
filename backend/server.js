@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 const userRouter = require('./routes/users.js');
 const menuRouter = require('./routes/menus.js');
 const orderRouter = require('./routes/orders.js');
+const authRouter = require('./routes/auth.js')
 
 // Configuring the server to accept and parse JSON data.
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 app.use('/users', userRouter);
 app.use('/menus', menuRouter);
 app.use('/orders', orderRouter);
+app.use('/auth', authRouter)
 
 // Error Handling Middlware
 app.use((err, req, res, next) => {
