@@ -7,9 +7,17 @@ const orderSchema = new Schema({
         required: true },
     orderItems: [
         { 
-            type: Array,
-             ref: 'Menu', 
-             required: true 
+            type: Array, 
+             required: true,
+             menuId: {
+                type: String,
+                required: true
+             },
+             quantity: {
+                type: Number,
+                required: true
+             }
+
         }
     ],
     status: {
